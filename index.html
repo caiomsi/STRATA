@@ -6,7 +6,6 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="STRATA">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="mask-icon" href="favicon.svg" color="#26241F">
 
@@ -17,10 +16,9 @@
        for the real domain once it exists.
        ============================================================ -->
   <title>STRATA — Considered Clothing, Built to Outlast Trends</title>
-  <meta name="description" content="STRATA makes considered, layered wardrobe essentials in honest natural materials — built to outlast trends. Quiet-luxury knitwear, tailoring and everyday basics.">
+  <meta name="description" content="STRATA makes considered, layered wardrobe essentials in honest natural materials — built to outlast trends. Shop quiet-luxury knitwear, tailoring, outerwear and everyday basics.">
   <link rel="canonical" href="https://strata.caiomsi.com/">
 
-  <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="STRATA — Considered Clothing, Built to Outlast Trends">
   <meta property="og:description" content="Layered wardrobe essentials in honest natural materials, built to outlast trends.">
@@ -35,30 +33,28 @@
   <meta name="twitter:title" content="STRATA — Considered Clothing, Built to Outlast Trends">
   <meta name="twitter:description" content="Layered wardrobe essentials in honest natural materials, built to outlast trends.">
   <meta name="twitter:image" content="https://strata.caiomsi.com/images/social-share.jpg">
-  <meta name="twitter:image:alt" content="STRATA — quiet-luxury layered essentials">
   <meta name="theme-color" content="#26241F">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Structured data: Organization + Brand -->
+  <!-- Structured data: Store + Organization + Brand -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "Store"],
         "@id": "https://strata.caiomsi.com/#org",
         "name": "STRATA",
         "url": "https://strata.caiomsi.com/",
         "logo": "https://strata.caiomsi.com/favicon.svg",
         "description": "STRATA makes considered, layered wardrobe essentials in honest natural materials, built to outlast trends.",
-        "slogan": "Considered clothing, built to outlast trends."
+        "slogan": "Considered clothing, built to outlast trends.",
+        "priceRange": "$$$"
       },
       {
         "@type": "Brand",
@@ -72,146 +68,328 @@
 </head>
 
 <body>
-  <!-- ============================ NAV ============================ -->
-  <header class="nav" id="top">
-    <div class="nav__inner">
+  <!-- ===================== ANNOUNCEMENT BAR ===================== -->
+  <div class="announce" id="announce">
+    <button class="announce__arrow" data-dir="-1" aria-label="Previous announcement">‹</button>
+    <div class="announce__track" aria-live="polite">
+      <span class="announce__msg is-active">Complimentary shipping &amp; lifetime repairs — worldwide</span>
+      <span class="announce__msg">Pay in 4 interest-free instalments at checkout</span>
+      <span class="announce__msg">New: The Sediment Collection has landed</span>
+    </div>
+    <button class="announce__arrow" data-dir="1" aria-label="Next announcement">›</button>
+  </div>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="hdr" id="top">
+    <div class="hdr__inner">
+      <div class="hdr__left">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="hdr__nav" aria-label="Primary">
+          <a href="#category">Outerwear</a>
+          <a href="#new">Knitwear</a>
+          <a href="#bestsellers">Tailoring</a>
+          <a href="#bestsellers">Accessories</a>
+        </nav>
+      </div>
+
       <a href="#top" class="brand" aria-label="STRATA home">STRATA</a>
-      <nav aria-label="Primary">
-        <ul class="nav__links">
-          <li><a href="#ethos">Ethos</a></li>
-          <li><a href="#collection">Collection</a></li>
-          <li><a href="#materials">Materials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="hdr__right">
+        <button class="icon-btn" id="search-toggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </button>
+        <a href="#contact" class="icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5S20 17 20 21"/></svg>
+        </a>
+        <button class="icon-btn icon-btn--bag" id="bag-toggle" aria-label="Open bag">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="bag-count" id="bag-count">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide-down search -->
+    <div class="search-bar" id="search-bar" hidden>
+      <div class="search-bar__inner">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <input type="search" placeholder="Search coats, knitwear, trousers…" aria-label="Search products">
+        <button class="search-bar__close" id="search-close" aria-label="Close search">Close</button>
+      </div>
     </div>
   </header>
+
+  <!-- Mobile nav drawer -->
+  <div class="drawer-overlay" id="overlay" hidden></div>
+  <aside class="mobile-nav" id="mobile-nav" aria-label="Mobile menu" hidden>
+    <button class="mobile-nav__close" aria-label="Close menu">✕</button>
+    <nav>
+      <a href="#category">Outerwear</a>
+      <a href="#new">Knitwear</a>
+      <a href="#bestsellers">Tailoring</a>
+      <a href="#bestsellers">Accessories</a>
+      <a href="#materials">Materials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
 
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <img class="hero__img" src="images/hero.jpg" alt="STRATA model in tonally layered knitwear and a tailored overcoat against a bone studio backdrop" fetchpriority="high">
     <div class="hero__content">
-      <p class="hero__eyebrow">Quiet-luxury essentials</p>
+      <p class="hero__eyebrow">The Sediment Collection — Autumn 2026</p>
       <h1>Considered clothing, built to <em>outlast trends</em>.</h1>
       <p class="hero__sub">A wardrobe laid down in layers — honest materials, restrained design, made to be worn for years, not seasons.</p>
-      <a href="#collection" class="btn btn--light">Explore the collection</a>
+      <div class="hero__cta">
+        <a href="#new" class="btn btn--light">Shop new arrivals</a>
+        <a href="#category" class="btn btn--ghost-light">Shop by category</a>
+      </div>
     </div>
   </section>
 
-  <!-- ============================ ETHOS ============================ -->
+  <!-- ===================== VALUE / TRUST BAR ===================== -->
+  <ul class="trust">
+    <li>Complimentary shipping over $200</li>
+    <li>Lifetime mending &amp; repairs</li>
+    <li>30-day easy returns</li>
+    <li>Carbon-neutral delivery</li>
+  </ul>
+
+  <!-- ===================== SHOP BY CATEGORY ===================== -->
+  <section class="section" id="category">
+    <div class="wrap">
+      <div class="section-head section-head--row fade-in">
+        <div>
+          <p class="eyebrow">Wardrobe</p>
+          <h2>Shop by category</h2>
+        </div>
+        <a href="#new" class="text-link">View all →</a>
+      </div>
+      <div class="cat-grid">
+        <a class="cat fade-in" href="#new">
+          <div class="cat__img"><img src="images/look-01.jpg" alt="Outerwear — tailored wool coats"></div>
+          <div class="cat__label"><span>Outerwear</span><span class="cat__cta">Shop</span></div>
+        </a>
+        <a class="cat fade-in" href="#new">
+          <div class="cat__img"><img src="images/look-02.jpg" alt="Knitwear — undyed wool sweaters"></div>
+          <div class="cat__label"><span>Knitwear</span><span class="cat__cta">Shop</span></div>
+        </a>
+        <a class="cat fade-in" href="#new">
+          <div class="cat__img"><img src="images/look-03.jpg" alt="Tailoring — relaxed trousers and shirting"></div>
+          <div class="cat__label"><span>Tailoring</span><span class="cat__cta">Shop</span></div>
+        </a>
+        <a class="cat fade-in" href="#bestsellers">
+          <div class="cat__img"><img src="images/prod-scarf.jpg" alt="Accessories — cashmere and leather"></div>
+          <div class="cat__label"><span>Accessories</span><span class="cat__cta">Shop</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEW ARRIVALS GRID ===================== -->
+  <section class="section section--tight" id="new">
+    <div class="wrap">
+      <div class="section-head section-head--row fade-in">
+        <div>
+          <p class="eyebrow">Just landed</p>
+          <h2>New arrivals</h2>
+        </div>
+        <a href="#bestsellers" class="text-link">Most considered →</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- Card 1 -->
+        <article class="product fade-in" data-id="coat" data-name="The Sediment Coat" data-price="540" data-img="images/prod-coat.jpg">
+          <div class="product__media">
+            <img src="images/prod-coat.jpg" alt="The Sediment Coat — oatmeal tailored wool overcoat">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">XS</button><button class="size">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Outerwear</p>
+            <h3 class="product__name">The Sediment Coat</h3>
+            <div class="swatches"><span style="--s:#C9C2B5"></span><span style="--s:#BE9B70"></span><span style="--s:#26241F"></span></div>
+            <p class="product__price">$540 <span>or 4 × $135</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="product fade-in" data-id="overshirt" data-name="The Overshirt" data-price="320" data-img="images/prod-overshirt.jpg">
+          <div class="product__media">
+            <img src="images/prod-overshirt.jpg" alt="The Overshirt — boxy stone wool overshirt">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">XS</button><button class="size">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Outerwear</p>
+            <h3 class="product__name">The Overshirt</h3>
+            <div class="swatches"><span style="--s:#C9C2B5"></span><span style="--s:#8A8175"></span></div>
+            <p class="product__price">$320 <span>or 4 × $80</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="product fade-in" data-id="merino" data-name="The Merino Crew" data-price="210" data-img="images/prod-merino.jpg">
+          <div class="product__media">
+            <img src="images/prod-merino.jpg" alt="The Merino Crew — fine stone-grey crewneck sweater">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">XS</button><button class="size">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Knitwear</p>
+            <h3 class="product__name">The Merino Crew</h3>
+            <div class="swatches"><span style="--s:#8A8175"></span><span style="--s:#F3EFE6"></span><span style="--s:#BE9B70"></span></div>
+            <p class="product__price">$210 <span>or 4 × $52.50</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+        <!-- Card 4 -->
+        <article class="product fade-in" data-id="trouser" data-name="The Tailored Trouser" data-price="240" data-img="images/prod-trouser.jpg">
+          <div class="product__media">
+            <img src="images/prod-trouser.jpg" alt="The Tailored Trouser — sand pleated wide-leg trousers">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">28</button><button class="size">30</button><button class="size">32</button><button class="size">34</button><button class="size">36</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Tailoring</p>
+            <h3 class="product__name">The Tailored Trouser</h3>
+            <div class="swatches"><span style="--s:#BE9B70"></span><span style="--s:#26241F"></span></div>
+            <p class="product__price">$240 <span>or 4 × $60</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDITORIAL BANNER ===================== -->
+  <section class="editorial fade-in">
+    <img class="editorial__img" src="images/editorial.jpg" alt="STRATA Sediment Collection editorial — two models in tonal neutral layers">
+    <div class="editorial__panel">
+      <p class="eyebrow">The edit</p>
+      <h2>Autumn, laid down in layers.</h2>
+      <p>Undyed wool, long-staple cotton and traceable linen — a single tonal range built to be worn together, season after season.</p>
+      <a href="#new" class="btn btn--sand">Explore the collection</a>
+    </div>
+  </section>
+
+  <!-- ===================== BESTSELLERS GRID ===================== -->
+  <section class="section section--tight" id="bestsellers">
+    <div class="wrap">
+      <div class="section-head section-head--row fade-in">
+        <div>
+          <p class="eyebrow">Most considered</p>
+          <h2>The pieces people keep</h2>
+        </div>
+        <a href="#new" class="text-link">Back to new →</a>
+      </div>
+
+      <div class="product-grid product-grid--3">
+        <!-- Card 5 -->
+        <article class="product fade-in" data-id="knit" data-name="The Bedrock Knit" data-price="280" data-img="images/prod-knit.jpg">
+          <div class="product__media">
+            <span class="tag">Bestseller</span>
+            <img src="images/prod-knit.jpg" alt="The Bedrock Knit — chunky cream wool sweater">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">XS</button><button class="size">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Knitwear</p>
+            <h3 class="product__name">The Bedrock Knit</h3>
+            <div class="swatches"><span style="--s:#F3EFE6"></span><span style="--s:#C9C2B5"></span></div>
+            <p class="product__price">$280 <span>or 4 × $70</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+        <!-- Card 6 -->
+        <article class="product fade-in" data-id="tee" data-name="The Essential Tee" data-price="90" data-img="images/prod-tee.jpg">
+          <div class="product__media">
+            <span class="tag">Bestseller</span>
+            <img src="images/prod-tee.jpg" alt="The Essential Tee — heavyweight white cotton t-shirt">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">XS</button><button class="size">S</button><button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Essentials</p>
+            <h3 class="product__name">The Essential Tee</h3>
+            <div class="swatches"><span style="--s:#F3EFE6"></span><span style="--s:#8A8175"></span><span style="--s:#26241F"></span></div>
+            <p class="product__price">$90 <span>or 4 × $22.50</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+        <!-- Card 7 -->
+        <article class="product fade-in" data-id="scarf" data-name="The Cashmere Scarf" data-price="150" data-img="images/prod-scarf.jpg">
+          <div class="product__media">
+            <span class="tag">Bestseller</span>
+            <img src="images/prod-scarf.jpg" alt="The Cashmere Scarf — folded oatmeal cashmere">
+            <div class="product__sizes" role="group" aria-label="Select size">
+              <button class="size">One size</button>
+            </div>
+          </div>
+          <div class="product__info">
+            <p class="product__cat">Accessories</p>
+            <h3 class="product__name">The Cashmere Scarf</h3>
+            <div class="swatches"><span style="--s:#BE9B70"></span><span style="--s:#C9C2B5"></span><span style="--s:#26241F"></span></div>
+            <p class="product__price">$150 <span>or 4 × $37.50</span></p>
+            <button class="btn btn--add" data-add>Add to bag</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPSULE / BUNDLE ===================== -->
+  <section class="section capsule">
+    <div class="wrap capsule__inner">
+      <div class="capsule__copy fade-in">
+        <p class="eyebrow">Build your capsule</p>
+        <h2>The Foundation Capsule</h2>
+        <p>Three essentials chosen to layer effortlessly — the Merino Crew, Essential Tee and Tailored Trouser. Bought together, kept for years.</p>
+        <p class="capsule__price"><s>$540</s> <b>$459</b> <span>Save 15%</span></p>
+        <button class="btn btn--sand" id="capsule-add"
+          data-bundle='[{"id":"capsule","name":"The Foundation Capsule (3 pieces)","price":459,"img":"images/prod-merino.jpg"}]'>
+          Add capsule to bag
+        </button>
+      </div>
+      <div class="capsule__pieces fade-in">
+        <figure><img src="images/prod-merino.jpg" alt="Merino Crew"><figcaption>Merino Crew</figcaption></figure>
+        <figure><img src="images/prod-tee.jpg" alt="Essential Tee"><figcaption>Essential Tee</figcaption></figure>
+        <figure><img src="images/prod-trouser.jpg" alt="Tailored Trouser"><figcaption>Tailored Trouser</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ETHOS BAND ===================== -->
   <section class="section ethos" id="ethos">
     <div class="wrap">
-      <div class="section-head fade-in">
+      <div class="section-head fade-in" style="text-align:center;margin-inline:auto;">
         <p class="eyebrow">The Strata Principle</p>
         <h2>Good clothing is built in layers, over time.</h2>
-        <p>We name ourselves after the way the earth records its history — patiently, one layer at a time. Each STRATA piece is made to settle into your wardrobe and stay there.</p>
       </div>
       <div class="pillars">
-        <div class="pillar fade-in">
-          <span class="pillar__num">01 — Material</span>
-          <h3>Honest fibres</h3>
-          <p>Undyed wool, long-staple cotton and European linen, chosen for how they age — not how they photograph on day one.</p>
-        </div>
-        <div class="pillar fade-in">
-          <span class="pillar__num">02 — Restraint</span>
-          <h3>Quiet design</h3>
-          <p>No loud logos, no seasonal noise. A tight palette of tones that layer with everything you already own.</p>
-        </div>
-        <div class="pillar fade-in">
-          <span class="pillar__num">03 — Longevity</span>
-          <h3>Made to outlast</h3>
-          <p>Reinforced seams, natural finishes and a repair-first promise. Buy once, keep for a decade.</p>
-        </div>
+        <div class="pillar fade-in"><span class="pillar__num">01 — Material</span><h3>Honest fibres</h3><p>Undyed wool, long-staple cotton and European linen, chosen for how they age.</p></div>
+        <div class="pillar fade-in"><span class="pillar__num">02 — Restraint</span><h3>Quiet design</h3><p>No loud logos, no seasonal noise. A tight palette that layers with everything.</p></div>
+        <div class="pillar fade-in"><span class="pillar__num">03 — Longevity</span><h3>Made to outlast</h3><p>Reinforced seams, natural finishes and a repair-first promise. Buy once.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ========================= COLLECTION ========================= -->
-  <section class="section" id="collection">
-    <div class="wrap">
-      <div class="section-head fade-in">
-        <p class="eyebrow">The Sediment Collection</p>
-        <h2>Layers that work together by design.</h2>
-        <p>Three foundation pieces, photographed in a single tonal range so they layer effortlessly — at home, at work, or anywhere in between.</p>
-      </div>
-
-      <div class="lookbook-grid">
-        <figure class="look fade-in">
-          <img src="images/look-01.jpg" alt="The Sediment Coat — minimalist tailored oatmeal wool overcoat">
-          <figcaption class="look__meta">
-            <h3>The Sediment Coat</h3>
-            <span class="price">$540</span>
-          </figcaption>
-        </figure>
-        <figure class="look fade-in">
-          <img src="images/look-02.jpg" alt="The Bedrock Knit — oversized undyed cream wool ribbed sweater">
-          <figcaption class="look__meta">
-            <h3>The Bedrock Knit</h3>
-            <span class="price">$280</span>
-          </figcaption>
-        </figure>
-        <figure class="look fade-in">
-          <img src="images/look-03.jpg" alt="The Layer Tee — fine cotton tee with softly tailored sand trousers">
-          <figcaption class="look__meta">
-            <h3>The Layer Set</h3>
-            <span class="price">$190</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FEATURED PIECE ===================== -->
-  <section class="section section--tight">
-    <div class="wrap">
-      <div class="feature">
-        <div class="feature__media fade-in">
-          <img src="images/look-01.jpg" alt="Detail of The Sediment Coat in oatmeal wool">
-        </div>
-        <div class="feature__body fade-in">
-          <p class="eyebrow">Piece N°01</p>
-          <h2>The Sediment Coat</h2>
-          <p class="lede">An unstructured overcoat in undyed Italian wool, cut long and easy to fall over everything from knitwear to tailoring.</p>
-          <span class="price">$540</span>
-          <p>Half-canvassed for drape without stiffness, with horn buttons and a single welt pocket. Made to soften, not wear out.</p>
-          <a href="#contact" class="btn btn--sand">Request a fitting</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="wrap">
-      <div class="feature feature--rev">
-        <div class="feature__media fade-in">
-          <img src="images/look-02.jpg" alt="Detail of The Bedrock Knit in cream wool">
-        </div>
-        <div class="feature__body fade-in">
-          <p class="eyebrow">Piece N°02</p>
-          <h2>The Bedrock Knit</h2>
-          <p class="lede">A heavyweight ribbed sweater in undyed lambswool — the foundation layer everything else is built on.</p>
-          <span class="price">$280</span>
-          <p>Knitted in a small family mill, fully-fashioned so it holds its shape wash after wash. Naturally water-resistant, never itchy.</p>
-          <a href="#contact" class="btn btn--sand">Request a fitting</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= MATERIALS ========================= -->
+  <!-- ===================== MATERIALS ===================== -->
   <section class="section materials" id="materials">
     <div class="wrap">
       <div class="materials__grid">
-        <div class="materials__img fade-in">
-          <img src="images/material.jpg" alt="Macro detail of undyed oatmeal wool and linen weave">
-        </div>
+        <div class="materials__img fade-in"><img src="images/material.jpg" alt="Macro detail of undyed oatmeal wool and linen weave"></div>
         <div class="fade-in">
           <p class="eyebrow">Materials</p>
-          <h2 class="section-head" style="margin-bottom:1rem;">We start with the fibre, not the trend.</h2>
-          <p class="section-head" style="margin-bottom:0;">Everything we make begins as a raw, traceable natural fibre. No synthetics, no shortcuts, no dye we can't justify.</p>
+          <h2 style="margin-bottom:1rem;">We start with the fibre, not the trend.</h2>
+          <p style="color:var(--stone);margin:0;">Everything we make begins as a raw, traceable natural fibre. No synthetics, no shortcuts, no dye we can't justify.</p>
           <ul class="materials__list">
             <li><b>Wool</b><span>Undyed lambswool from mulesing-free flocks, spun in Italy.</span></li>
             <li><b>Cotton</b><span>Long-staple organic cotton, GOTS-certified and pre-washed.</span></li>
@@ -223,33 +401,39 @@
     </div>
   </section>
 
-  <!-- ========================= CONTACT ========================= -->
+  <!-- ===================== INSTAGRAM FEED ===================== -->
+  <section class="section section--tight insta">
+    <div class="wrap">
+      <div class="section-head fade-in" style="text-align:center;margin-inline:auto;">
+        <p class="eyebrow">@stratawear</p>
+        <h2>Worn in the wild</h2>
+        <p>Tag <b>@stratawear</b> to be featured.</p>
+      </div>
+      <div class="insta-grid">
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/ig-1.jpg" alt=""><span class="insta-glyph">◎</span></a>
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/ig-2.jpg" alt=""><span class="insta-glyph">◎</span></a>
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/look-01.jpg" alt=""><span class="insta-glyph">◎</span></a>
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/material.jpg" alt=""><span class="insta-glyph">◎</span></a>
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/look-02.jpg" alt=""><span class="insta-glyph">◎</span></a>
+        <a class="insta-cell fade-in" href="#" aria-label="Instagram post"><img src="images/look-03.jpg" alt=""><span class="insta-glyph">◎</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER / CONTACT ===================== -->
   <section class="section contact" id="contact">
     <div class="wrap">
       <div class="contact__grid">
         <div class="fade-in">
           <p class="eyebrow">Stay in the seam</p>
-          <h2 class="section-head" style="margin-bottom:1rem;">Join the list, or tell us what you're looking for.</h2>
-          <p>New pieces are released in small, considered drops. Leave a note and we'll let you know when the next layer lands — or answer any question about sizing, materials and repairs.</p>
+          <h2 style="margin-bottom:1rem;">Join the list for first access to small drops.</h2>
+          <p>New pieces are released in small, considered drops. Leave a note and we'll let you know when the next layer lands — or ask anything about sizing, materials and repairs.</p>
         </div>
         <form class="form" id="contact-form" novalidate>
-          <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
-          </div>
-          <div>
-            <label for="message">Message <span style="text-transform:none;letter-spacing:0;font-weight:400;">(optional)</span></label>
-            <textarea id="message" name="message"></textarea>
-          </div>
-          <!-- Honeypot — keep this; real users never see it -->
-          <div class="honeypot" aria-hidden="true">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
-          </div>
+          <div><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+          <div><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+          <div><label for="message">Message <span style="text-transform:none;letter-spacing:0;font-weight:400;">(optional)</span></label><textarea id="message" name="message"></textarea></div>
+          <div class="honeypot" aria-hidden="true"><label for="company">Company</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></div>
           <button type="submit" class="btn btn--sand">Join the list</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -257,49 +441,58 @@
     </div>
   </section>
 
-  <!-- ========================= FOOTER ========================= -->
+  <!-- ============================ FOOTER ============================ -->
   <footer class="footer">
     <div class="wrap">
       <div class="footer__top">
-        <div>
-          <a href="#top" class="brand" aria-label="STRATA home">STRATA</a>
-          <p style="max-width:30ch;margin:1rem 0 0;color:var(--stone);">Considered clothing, built to outlast trends.</p>
+        <div class="footer__brand">
+          <a href="#top" class="brand">STRATA</a>
+          <p>Considered clothing, built to outlast trends.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Pinterest">Pinterest</a>
+            <a href="#" aria-label="Journal">Journal</a>
+          </div>
         </div>
         <div class="footer__cols">
-          <div>
-            <h4>Shop</h4>
-            <ul>
-              <li><a href="#collection">Collection</a></li>
-              <li><a href="#collection">Coats</a></li>
-              <li><a href="#collection">Knitwear</a></li>
-              <li><a href="#collection">Essentials</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>Brand</h4>
-            <ul>
-              <li><a href="#ethos">Ethos</a></li>
-              <li><a href="#materials">Materials</a></li>
-              <li><a href="#materials">Repairs</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>Social</h4>
-            <ul>
-              <li><a href="#" rel="noopener">Instagram</a></li>
-              <li><a href="#" rel="noopener">Journal</a></li>
-              <li><a href="#contact">Newsletter</a></li>
-            </ul>
-          </div>
+          <div><h4>Shop</h4><ul><li><a href="#new">New arrivals</a></li><li><a href="#category">Outerwear</a></li><li><a href="#new">Knitwear</a></li><li><a href="#bestsellers">Tailoring</a></li><li><a href="#bestsellers">Accessories</a></li></ul></div>
+          <div><h4>Client care</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#materials">Lifetime repairs</a></li><li><a href="#">Size guide</a></li><li><a href="#contact">Contact</a></li></ul></div>
+          <div><h4>About</h4><ul><li><a href="#materials">Our materials</a></li><li><a href="#ethos">The Strata Principle</a></li><li><a href="#">Sustainability</a></li><li><a href="#">The journal</a></li></ul></div>
         </div>
       </div>
+
+      <div class="footer__pay">
+        <div class="footer__country">United States · USD $</div>
+        <div class="pay-icons" aria-label="Accepted payments">
+          <span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span><span>Pay</span>
+        </div>
+      </div>
+
       <div class="footer__bottom">
         <span>© <span id="year">2026</span> STRATA. An invented brand by MSI Studio.</span>
-        <span>Quiet-luxury essentials · Made to outlast</span>
+        <span class="footer__legal"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></span>
       </div>
     </div>
   </footer>
+
+  <!-- ============================ CART DRAWER ============================ -->
+  <aside class="cart" id="cart" aria-label="Shopping bag" hidden>
+    <div class="cart__head">
+      <h3>Your bag (<span id="cart-qty">0</span>)</h3>
+      <button class="cart__close" id="cart-close" aria-label="Close bag">✕</button>
+    </div>
+    <div class="cart__items" id="cart-items">
+      <p class="cart__empty">Your bag is empty — every STRATA piece is made to be kept.</p>
+    </div>
+    <div class="cart__foot">
+      <div class="cart__subtotal"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+      <p class="cart__note">Shipping &amp; instalments calculated at checkout.</p>
+      <button class="btn btn--sand" id="cart-checkout" disabled>Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="js/main.js"></script>
 </body>
