@@ -1,0 +1,30 @@
+name: Validate site
+
+# Catches broken links and missing image/asset paths automatically on every push.
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links & local asset paths
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Verify internal anchors/assets; skip GitHub Pages host (custom domain
+          # not live yet), the MSI-Forms backend, and common social/search hosts.
+          args: >-
+            --no-progress
+            --include-fragments
+            --exclude-path images
+            --exclude "caiomsi\.github\.io"
+            --exclude "forms\.caiomsi\.com"
+            --exclude "facebook\.com|instagram\.com|google\.com"
+            index.html
+          fail: true
