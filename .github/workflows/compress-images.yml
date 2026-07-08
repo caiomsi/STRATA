@@ -1,0 +1,33 @@
+name: Compress images
+
+# Automatically compresses new/changed jpg/png images on push, so photos never
+# need manual optimization before committing.
+on:
+  push:
+    branches: [master]
+    paths:
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.png'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compress images
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          compressOnly: true
+
+      - name: Commit compressed images
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: compress images [skip ci]"
+          file_pattern: "*.jpg *.jpeg *.png"
