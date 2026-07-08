@@ -31,3 +31,4 @@ jobs:
         with:
           commit_message: "chore: compress images [skip ci]"
           file_pattern: "*.jpg *.jpeg *.png"
+          add_options: "--ignore-unmatch"
