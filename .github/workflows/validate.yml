@@ -24,6 +24,7 @@ jobs:
             --include-fragments
             --exclude-path images
             --exclude "caiomsi\.github\.io"
+            --exclude "strata\.caiomsi\.com"
             --exclude "forms\.caiomsi\.com"
             --exclude "facebook\.com|instagram\.com|google\.com"
             index.html
